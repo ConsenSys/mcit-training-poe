@@ -15,6 +15,7 @@ contract Proof
     {
         if(files[fileHash].timestamp == 0)
         {
+            // Getting realtime from block by block.timestamp.
             files[fileHash] = FileDetails(block.timestamp, owner);
             emit logFileAddedStatus(true, block.timestamp, owner, fileHash);
         }
@@ -24,6 +25,7 @@ contract Proof
         }
     }
 
+    // Getting the details of the file.
     function get(string fileHash) public view returns (uint timestamp, string owner)
     {
         return (files[fileHash].timestamp, files[fileHash].owner);
